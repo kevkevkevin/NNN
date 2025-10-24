@@ -2,45 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- replaced viewport to disable page pinch zoom while allowing JS touch handling -->
+    <!-- SUCK MY BALLS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="viewport-legacy" content="width=device-width, initial-scale=1.0">
     <title>🚫🥜 NNN 🚫🥜</title>
-    <meta name="description" content="Create personalized RSSA 2025 conference images — upload your photo, edit position, and download or share with one click.">
-    <link rel="canonical" href="https://2025.rssa.sa/">
-
-    <!-- Open Graph (Facebook, LinkedIn, many crawlers) -->
-    <meta property="og:title" content="Joining Us at RSSA 2025 Conference 🎉">
-    <meta property="og:description" content="Create your personalized RSSA 2025 conference image — upload your photo, adjust, and share.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://2025.rssa.sa/">
-    <meta property="og:image" content="https://previewengine-accl.zohoexternal.com/image/BACKSTAGE/178532000000422793?cli-msg=eyJtb2R1bGUiOiJFdmVudEltYWdlUmVzb3VyY2UiLCJ0eXBlIjowLCJwb3J0YWxJZCI6Ijg5MjAyODQ0NiIsInN1YlJlc291cmNlSWQiOiI4OTIwMjg0NDYiLCJpZCI6IjE3ODUzMjAwMDAwMDQyMjc5MyIsInRrIjoiMWFmZDcwNTYzNDQ3YmM4OGYzNjMyMjBjMDAyZTdiOTM0NjhjYjg4NzdjMjc0YTE0YzYwZTNjNTZmNzIzNzA2NjBlYzA1MWQwOGQwYmU4MzRlZmZiNGJjZDBiZGVhYzM1MTllNjU4MjI3NjcwZTAwZjkzNTQyYjYzOGM1ZDRhNGUifQ=="> <!-- update to your hosted absolute image URL -->
-    <meta property="og:image:alt" content="RSSA 2025 Conference banner">
-    <meta property="og:site_name" content="RSSA 2025">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Joining Us at RSSA 2025 Conference 🎉">
-    <meta name="twitter:description" content="Create your personalized RSSA 2025 conference image — upload your photo, adjust, and share.">
-    <meta name="twitter:image" content="https://previewengine-accl.zohoexternal.com/image/BACKSTAGE/178532000000422793?cli-msg=eyJtb2R1bGUiOiJFdmVudEltYWdlUmVzb3VyY2UiLCJ0eXBlIjowLCJwb3J0YWxJZCI6Ijg5MjAyODQ0NiIsInN1YlJlc291cmNlSWQiOiI4OTIwMjg0NDYiLCJpZCI6IjE3ODUzMjAwMDAwMDQyMjc5MyIsInRrIjoiMWFmZDcwNTYzNDQ3YmM4OGYzNjMyMjBjMDAyZTdiOTM0NjhjYjg4NzdjMjc0YTE0YzYwZTNjNTZmNzIzNzA2NjBlYzA1MWQwOGQwYmU4MzRlZmZiNGJjZDBiZGVhYzM1MTllNjU4MjI3NjcwZTAwZjkzNTQyYjYzOGM1ZDRhNGUifQ=="> <!-- update to your hosted absolute image URL -->
-    <meta name="twitter:image:alt" content="RSSA 2025 Conference banner">
-
-    <!-- Optional structured data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "RSSA 2025 Image Generator",
-      "url": "https://2025.rssa.sa/",
-      "description": "Create personalized RSSA 2025 conference images — upload, adjust and share.",
-      "image": "https://previewengine-accl.zohoexternal.com/image/BACKSTAGE/178532000000422793?cli-msg=eyJtb2R1bGUiOiJFdmVudEltYWdlUmVzb3VyY2UiLCJ0eXBlIjowLCJwb3J0YWxJZCI6Ijg5MjAyODQ0NiIsInN1YlJlc291cmNlSWQiOiI4OTIwMjg0NDYiLCJpZCI6IjE3ODUzMjAwMDAwMDQyMjc5MyIsInRrIjoiMWFmZDcwNTYzNDQ3YmM4OGYzNjMyMjBjMDAyZTdiOTM0NjhjYjg4NzdjMjc0YTE0YzYwZTNjNTZmNzIzNzA2NjBlYzA1MWQwOGQwYmU4MzRlZmZiNGJjZDBiZGVhYzM1MTllNjU4MjI3NjcwZTAwZjkzNTQyYjYzOGM1ZDRhNGUifQ=="
-    }
-    </script>
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Matrix background styles -->
     <style>
-        /* full-viewport canvas behind the app */
         #matrix-bg {
             position: fixed;
             inset: 0;
@@ -52,18 +20,16 @@
             background: #aaaaaa;
         }
 
-        /* Add overlay */
         .overlay {
             position: fixed;
             inset: 0;
             width: 100%;
             height: 100%;
-            background: #0000006b; /* Adjust opacity here */
+            background: #0000006b;
             z-index: 0;
             pointer-events: none;
         }
 
-        /* ensure app content sits above the background and overlay */
         .app-container {
             position: relative;
             z-index: 1;
@@ -71,7 +37,6 @@
     </style>
 </head>
 <body class="dark-theme">
-    <!-- Matrix canvas (falls behind content) -->
     <canvas id="matrix-bg" aria-hidden="true"></canvas>
     <div class="overlay"></div>
 
@@ -137,7 +102,6 @@
     </div>
 
     <script type="module">
-       // Replace the existing share button code with this (inside the script tag):
         const postToX = document.getElementById('postToX');
 
         postToX.addEventListener('click', () => {
@@ -158,7 +122,6 @@
                     }
                 }
 
-                // Fallback: Download image and open X compose window
                 const link = document.createElement('a');
                 link.download = 'nnn-day1.png';
                 link.href = canvas.toDataURL('image/png');
@@ -166,7 +129,6 @@
                 link.click();
                 document.body.removeChild(link);
 
-                // Open X compose window with the text
                 const text = encodeURIComponent("Day 1 NNN please be good to me! Join the movement #NNN2025 🚫🥜 @nnn2025");
                 window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank', 'noopener');
                 
@@ -174,7 +136,6 @@
             });
         });
 
-        // Keep the canvasToFile helper function:
         function canvasToFile(callback) {
             if (!canvas) return callback(null);
             canvas.toBlob((blob) => {
@@ -183,7 +144,6 @@
                 callback(file);
             }, 'image/png');
         }
-        // --- CANVAS SETUP AND CONSTANTS ---
         const canvas = document.getElementById('generatorCanvas');
         const ctx = canvas.getContext('2d');
         const userNameInput = document.getElementById('userName');
@@ -206,7 +166,6 @@
         const IMG_WIDTH = CANVAS_WIDTH * 0.35;
         const IMG_HEIGHT = CANVAS_HEIGHT * 0.35;
 
-        // use a rounded-rect with different corner radii to imitate banner photo frame
         const FRAME_RADIUS = { tl: 36, tr: 16, br: 36, bl: 16 };
 
         let userImage = new Image();
@@ -228,7 +187,6 @@
         let lastX = 0;
         let lastY = 0;
 
-        // pinch state for two-finger zoom on canvas
         let pinchActive = false;
         let initialPinchDistance = 0;
         let initialPinchScale = 1;
@@ -303,9 +261,7 @@
             context.fillText(line, x, y);
         }
 
-        // helper: create rounded rect path (supports per-corner radii)
         function roundedRectPath(ctx, x, y, w, h, r) {
-            // r can be number or object {tl,tr,br,bl}
             const tl = (typeof r === 'number') ? r : (r.tl || 0);
             const tr = (typeof r === 'number') ? r : (r.tr || 0);
             const br = (typeof r === 'number') ? r : (r.br || 0);
@@ -328,18 +284,15 @@
         }
 
         function redrawCanvas() {
-            // Clear / draw background
             ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
             drawBackground(ctx);
 
-            // compute the rectangle for the photo (square/rounded-rect)
             const rectW = IMG_WIDTH;
             const rectH = IMG_HEIGHT;
             const rectX = IMG_CENTER_X - rectW / 2;
             const rectY = IMG_CENTER_Y - rectH / 2;
-            const rectRadius = 20; // adjust for corner roundness
+            const rectRadius = 20; 
 
-            // Draw clipped user image inside rounded rectangle
             ctx.save();
             ctx.beginPath();
             roundedRectPath(ctx, rectX, rectY, rectW, rectH, rectRadius);
@@ -351,7 +304,6 @@
                 const drawnHeight = imageState.naturalHeight * imageState.scale;
                 ctx.drawImage(userImage, imageState.x, imageState.y, drawnWidth, drawnHeight);
             } else {
-                // placeholder fill inside clipped area
                 ctx.fillStyle = '#1e293b';
                 ctx.fillRect(rectX, rectY, rectW, rectH);
 
@@ -364,7 +316,6 @@
 
             ctx.restore();
 
-            // draw a subtle rounded-rect frame/stroke with shadow
             ctx.save();
             ctx.beginPath();
             roundedRectPath(ctx, rectX, rectY, rectW, rectH, rectRadius);
@@ -376,11 +327,9 @@
             ctx.stroke();
             ctx.restore();
 
-            // ---------- DYNAMIC TEXT BLOCK (auto layout) ----------
             const startX = 150;
             const nameStartY = 170;
 
-            // Helper to count wrapped lines (uses current ctx.font)
             function getWrappedLinesCount(text, maxWidth) {
                 if (!text) return 0;
                 const words = text.split(' ');
@@ -396,11 +345,10 @@
                         line = testLine;
                     }
                 }
-                if (line) lines++; // last partial line
+                if (line) lines++; 
                 return lines;
             }
 
-            // NAME
             ctx.fillStyle = TEXT_COLOR_NAME;
             ctx.font = 'bold 65px Inter';
             ctx.textAlign = 'left';
