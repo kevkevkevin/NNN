@@ -37,8 +37,44 @@
     }
     </script>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Matrix background styles -->
+    <style>
+        /* full-viewport canvas behind the app */
+        #matrix-bg {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: 0;
+            pointer-events: none;
+            background: #aaaaaa;
+        }
+
+        /* Add overlay */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: #0000006b; /* Adjust opacity here */
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ensure app content sits above the background and overlay */
+        .app-container {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body class="dark-theme">
+    <!-- Matrix canvas (falls behind content) -->
+    <canvas id="matrix-bg" aria-hidden="true"></canvas>
+    <div class="overlay"></div>
+
     <div class="app-container">
         
 
@@ -606,6 +642,105 @@
     });
 
     loadStaticBackground();
+</script>
+
+<script>
+/* Matrix-style falling characters background */
+(function () {
+    const bg = document.getElementById('matrix-bg');
+    if (!bg) return;
+    const ctx = bg.getContext('2d');
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let dpr = Math.max(1, window.devicePixelRatio || 1);
+
+    // Expanded character set
+    const chars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロゴゾドボポabcdefghijklmnopqrstuvwxyz0123456789@#%&*';
+    let fontSize = 14; // Smaller font size for smoother look
+    let columns;
+    let drops = [];
+
+    // Add speed and opacity variations for more organic look
+    class Drop {
+        constructor(x) {
+            this.x = x;
+            this.reset();
+        }
+
+        reset() {
+            this.y = -Math.random() * height * 0.5; // Start above viewport
+            this.speed = 1 + Math.random() * 1.5; // Variable speed
+            this.opacity = 0.7 + Math.random() * 0.3; // Variable opacity
+        }
+
+        update() {
+            this.y += this.speed;
+            if (this.y > height) {
+                this.reset();
+            }
+        }
+    }
+
+    function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        dpr = Math.max(1, window.devicePixelRatio || 1);
+
+        bg.width = Math.floor(width * dpr);
+        bg.height = Math.floor(height * dpr);
+        bg.style.width = width + 'px';
+        bg.style.height = height + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        fontSize = Math.max(12, Math.min(20, Math.floor(width / 70)));
+        columns = Math.floor(width / fontSize);
+        ctx.font = `${fontSize}px monospace`;
+
+        // Initialize drops with new Drop objects
+        drops = Array(columns).fill(null).map((_, i) => new Drop(i * fontSize));
+    }
+
+    function draw() {
+        // Semi-transparent black for trails
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, width, height);
+
+        // Draw characters
+        drops.forEach(drop => {
+            const char = chars[Math.floor(Math.random() * chars.length)];
+            
+            // Gradient effect for each character
+            const gradient = ctx.createLinearGradient(0, drop.y - fontSize, 0, drop.y);
+            gradient.addColorStop(0, `rgba(160, 255, 180, ${drop.opacity})`);
+            gradient.addColorStop(1, `rgba(160, 255, 180, ${drop.opacity * 0.3})`);
+            
+            ctx.fillStyle = gradient;
+            ctx.fillText(char, drop.x, drop.y);
+            
+            drop.update();
+        });
+
+        requestAnimationFrame(draw);
+    }
+
+    // Handle resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resize, 100);
+    }, { passive: true });
+
+    // Pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) cancelAnimationFrame(draw);
+        else requestAnimationFrame(draw);
+    });
+
+    // Initialize and start
+    resize();
+    requestAnimationFrame(draw);
+})();
 </script>
 </body>
 </html>
