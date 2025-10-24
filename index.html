@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- replaced viewport to disable page pinch zoom while allowing JS touch handling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport-legacy" content="width=device-width, initial-scale=1.0">
+    <title>🚫🥜 NNN 🚫🥜</title>
+    <meta name="description" content="Create personalized RSSA 2025 conference images — upload your photo, edit position, and download or share with one click.">
+    <link rel="canonical" href="https://2025.rssa.sa/">
+
+    <!-- Open Graph (Facebook, LinkedIn, many crawlers) -->
+    <meta property="og:title" content="Joining Us at RSSA 2025 Conference 🎉">
+    <meta property="og:description" content="Create your personalized RSSA 2025 conference image — upload your photo, adjust, and share.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://2025.rssa.sa/">
+    <meta property="og:image" content="https://previewengine-accl.zohoexternal.com/image/BACKSTAGE/178532000000422793?cli-msg=eyJtb2R1bGUiOiJFdmVudEltYWdlUmVzb3VyY2UiLCJ0eXBlIjowLCJwb3J0YWxJZCI6Ijg5MjAyODQ0NiIsInN1YlJlc291cmNlSWQiOiI4OTIwMjg0NDYiLCJpZCI6IjE3ODUzMjAwMDAwMDQyMjc5MyIsInRrIjoiMWFmZDcwNTYzNDQ3YmM4OGYzNjMyMjBjMDAyZTdiOTM0NjhjYjg4NzdjMjc0YTE0YzYwZTNjNTZmNzIzNzA2NjBlYzA1MWQwOGQwYmU4MzRlZmZiNGJjZDBiZGVhYzM1MTllNjU4MjI3NjcwZTAwZjkzNTQyYjYzOGM1ZDRhNGUifQ=="> <!-- update to your hosted absolute image URL -->
+    <meta property="og:image:alt" content="RSSA 2025 Conference banner">
+    <meta property="og:site_name" content="RSSA 2025">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Joining Us at RSSA 2025 Conference 🎉">
+    <meta name="twitter:description" content="Create your personalized RSSA 2025 conference image — upload your photo, adjust, and share.">
+    <meta name="twitter:image" content="https://previewengine-accl.zohoexternal.com/image/BACKSTAGE/178532000000422793?cli-msg=eyJtb2R1bGUiOiJFdmVudEltYWdlUmVzb3VyY2UiLCJ0eXBlIjowLCJwb3J0YWxJZCI6Ijg5MjAyODQ0NiIsInN1YlJlc291cmNlSWQiOiI4OTIwMjg0NDYiLCJpZCI6IjE3ODUzMjAwMDAwMDQyMjc5MyIsInRrIjoiMWFmZDcwNTYzNDQ3YmM4OGYzNjMyMjBjMDAyZTdiOTM0NjhjYjg4NzdjMjc0YTE0YzYwZTNjNTZmNzIzNzA2NjBlYzA1MWQwOGQwYmU4MzRlZmZiNGJjZDBiZGVhYzM1MTllNjU4MjI3NjcwZTAwZjkzNTQyYjYzOGM1ZDRhNGUifQ=="> <!-- update to your hosted absolute image URL -->
+    <meta name="twitter:image:alt" content="RSSA 2025 Conference banner">
+
+    <!-- Optional structured data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "RSSA 2025 Image Generator",
+      "url": "https://2025.rssa.sa/",
+      "description": "Create personalized RSSA 2025 conference images — upload, adjust and share.",
+      "image": "https://previewengine-accl.zohoexternal.com/image/BACKSTAGE/178532000000422793?cli-msg=eyJtb2R1bGUiOiJFdmVudEltYWdlUmVzb3VyY2UiLCJ0eXBlIjowLCJwb3J0YWxJZCI6Ijg5MjAyODQ0NiIsInN1YlJlc291cmNlSWQiOiI4OTIwMjg0NDYiLCJpZCI6IjE3ODUzMjAwMDAwMDQyMjc5MyIsInRrIjoiMWFmZDcwNTYzNDQ3YmM4OGYzNjMyMjBjMDAyZTdiOTM0NjhjYjg4NzdjMjc0YTE0YzYwZTNjNTZmNzIzNzA2NjBlYzA1MWQwOGQwYmU4MzRlZmZiNGJjZDBiZGVhYzM1MTllNjU4MjI3NjcwZTAwZjkzNTQyYjYzOGM1ZDRhNGUifQ=="
+    }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        
+
+        <div class="main-layout">
+            <!-- Input Panel -->
+            <div id="input-panel" class="input-panel">
+                <!-- Instruction Box -->
+               <p class="app-description">Enter your details and upload your photo to generate a personalized conference image. Use your mouse/touch to drag and zoom your picture inside the rectangle!</p>
+
+                <!-- Name Input -->
+                <div class="form-group">
+                    <label for="userName" class="form-label">Full Name</label>
+                    <input type="text" id="userName" value="Enter your X handle" placeholder="Enter Full Name" class="form-input">
+                </div>
+                
+                <!-- Position Input -->
+                <div class="form-group" style="display: none;">
+                    <label for="userPosition" class="form-label">Position</label>
+                    <input type="text" id="userPosition" value="Assistant Professor of Radiology" placeholder="Enter Position" class="form-input">
+                </div>
+
+                <!-- Institute Input -->
+                <div class="form-group" style="display: none;">
+                    <label for="userInstitute" class="form-label">Institute & Department</label>
+                    <textarea id="userInstitute" rows="3" placeholder="Diagnostic Radiology & Imaging Department of Cleveland Clinic Abu Dhabi’s Diagnostics Institute, UAE" class="form-textarea">Diagnostic Radiology & Imaging Department of Cleveland Clinic Abu Dhabi’s Diagnostics Institute, UAE</textarea>
+                </div>
+                
+                <!-- Picture Upload (Profile) -->
+                <div class="form-group file-input-wrapper">
+                    <label for="userPicture" class="form-label">Your Profile Picture (for the rectangular frame)</label>
+                    <input type="file" id="userPicture" accept="image/*" class="file-upload">
+                </div>
+                
+                <!-- Instruction for manipulation -->
+                <div class="instruction-box">
+                    <p>Photo Adjustment:</p>
+                    <ul>
+                        <li>**Drag** with the mouse/touch to move the picture.</li>
+                        <li>**Scroll/Pinch** to zoom in or out.</li>
+                    </ul>
+                </div>
+
+                <!-- Generate Button -->
+                <button id="generateBtn" class="generate-btn">
+                    Download Final Image (PNG)
+                </button>
+
+                <button id="postToX" class="share-btn" type="button">
+                    Post to X 🐦
+                </button>
+            </div>
+
+            <!-- Canvas Preview Panel -->
+            <div class="canvas-panel">
+                <div class="canvas-container">
+                    <canvas id="generatorCanvas" width="1080" height="1080"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+       // Replace the existing share button code with this (inside the script tag):
+        const postToX = document.getElementById('postToX');
+
+        postToX.addEventListener('click', () => {
+            canvasToFile(async (file) => {
+                // Try native sharing first
+                if (file) {
+                    try {
+                        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                            await navigator.share({
+                                files: [file],
+                                text: "Day 1 NNN please be good to me",
+                                url: window.location.href
+                            });
+                            return;
+                        }
+                    } catch (err) {
+                        console.warn('Web Share failed', err);
+                    }
+                }
+
+                // Fallback: Download image and open X compose window
+                const link = document.createElement('a');
+                link.download = 'nnn-day1.png';
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Open X compose window with the text
+                const text = encodeURIComponent("Day 1 NNN please be good to me");
+                window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank', 'noopener');
+                
+                showMessage('Image downloaded! Please attach it to your X post manually.', 'info');
+            });
+        });
+
+        // Keep the canvasToFile helper function:
+        function canvasToFile(callback) {
+            if (!canvas) return callback(null);
+            canvas.toBlob((blob) => {
+                if (!blob) return callback(null);
+                const file = new File([blob], 'nnn-day1.png', { type: 'image/png' });
+                callback(file);
+            }, 'image/png');
+        }
+        // --- CANVAS SETUP AND CONSTANTS ---
+        const canvas = document.getElementById('generatorCanvas');
+        const ctx = canvas.getContext('2d');
+        const userNameInput = document.getElementById('userName');
+        const userPositionInput = document.getElementById('userPosition');
+        const userInstituteInput = document.getElementById('userInstitute');
+        const userPictureInput = document.getElementById('userPicture');
+        const generateBtn = document.getElementById('generateBtn');
+        const messageBox = document.getElementById('message-box');
+
+        const CANVAS_WIDTH = 1080;
+        const CANVAS_HEIGHT = 1080;
+
+        const THEME_COLOR = '#03a75b';
+        const TEXT_COLOR_MAIN = '#ffffff';
+        const TEXT_COLOR_HIGHLIGHT = '#A3E635';
+        const TEXT_COLOR_NAME = '#00c76f';
+
+        const IMG_CENTER_X = CANVAS_WIDTH * 0.76;
+        const IMG_CENTER_Y = CANVAS_HEIGHT * 0.36;
+        const IMG_WIDTH = CANVAS_WIDTH * 0.35;
+        const IMG_HEIGHT = CANVAS_HEIGHT * 0.35;
+
+        // use a rounded-rect with different corner radii to imitate banner photo frame
+        const FRAME_RADIUS = { tl: 36, tr: 16, br: 36, bl: 16 };
+
+        let userImage = new Image();
+        let imageState = {
+            loaded: false,
+            x: 0,
+            y: 0,
+            scale: 1,
+            naturalWidth: 0,
+            naturalHeight: 0,
+            minScale: 0
+        };
+
+        let backgroundImage = new Image();
+        let backgroundState = { loaded: false, naturalWidth: 0, naturalHeight: 0 };
+        const STATIC_BG_URL = 'banner.png';
+
+        let isDragging = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        // pinch state for two-finger zoom on canvas
+        let pinchActive = false;
+        let initialPinchDistance = 0;
+        let initialPinchScale = 1;
+        let pinchCenterCanvas = { x: 0, y: 0 };
+
+        function getTouchDistance(t1, t2) {
+            const dx = t1.clientX - t2.clientX;
+            const dy = t1.clientY - t2.clientY;
+            return Math.hypot(dx, dy);
+        }
+
+        function getTouchCenterCanvas(t1, t2) {
+            const rect = canvas.getBoundingClientRect();
+            const scale = CANVAS_WIDTH / rect.width;
+            const cx = (t1.clientX + t2.clientX) / 2;
+            const cy = (t1.clientY + t2.clientY) / 2;
+            return { x: (cx - rect.left) * scale, y: (cy - rect.top) * scale };
+        }
+
+        function showMessage(text, type = 'info') {
+            messageBox.textContent = text;
+            messageBox.classList.remove('info-message', 'success-message', 'error-message');
+            if (type === 'success') messageBox.classList.add('success-message');
+            else if (type === 'error') messageBox.classList.add('error-message');
+            else messageBox.classList.add('info-message');
+            messageBox.style.display = 'block';
+            clearTimeout(messageBox.timer);
+            messageBox.timer = setTimeout(() => { messageBox.style.display = 'none'; }, 5000);
+        }
+
+        function drawBackground(ctx) {
+            if (!backgroundState.loaded) {
+                ctx.fillStyle = THEME_COLOR;
+                ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+                return;
+            }
+            const img = backgroundImage;
+            const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT;
+            const imgAspect = backgroundState.naturalWidth / backgroundState.naturalHeight;
+
+            let drawWidth, drawHeight, offsetX, offsetY;
+
+            if (imgAspect > canvasAspect) {
+                drawHeight = CANVAS_HEIGHT;
+                drawWidth = imgAspect * drawHeight;
+                offsetX = (CANVAS_WIDTH - drawWidth) / 2;
+                offsetY = 0;
+            } else {
+                drawWidth = CANVAS_WIDTH;
+                drawHeight = drawWidth / imgAspect;
+                offsetX = 0;
+                offsetY = (CANVAS_HEIGHT - drawHeight) / 2;
+            }
+            ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+        }
+
+        function wrapText(context, text, x, y, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            let line = '';
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                const metrics = context.measureText(testLine);
+                const testWidth = metrics.width;
+                if (testWidth > maxWidth && n > 0) {
+                    context.fillText(line, x, y);
+                    line = words[n] + ' ';
+                    y += lineHeight;
+                } else {
+                    line = testLine;
+                }
+            }
+            context.fillText(line, x, y);
+        }
+
+        // helper: create rounded rect path (supports per-corner radii)
+        function roundedRectPath(ctx, x, y, w, h, r) {
+            // r can be number or object {tl,tr,br,bl}
+            const tl = (typeof r === 'number') ? r : (r.tl || 0);
+            const tr = (typeof r === 'number') ? r : (r.tr || 0);
+            const br = (typeof r === 'number') ? r : (r.br || 0);
+            const bl = (typeof r === 'number') ? r : (r.bl || 0);
+
+            ctx.moveTo(x + tl, y);
+            ctx.lineTo(x + w - tr, y);
+            if (tr) ctx.quadraticCurveTo(x + w, y, x + w, y + tr);
+            else ctx.lineTo(x + w, y);
+            ctx.lineTo(x + w, y + h - br);
+            if (br) ctx.quadraticCurveTo(x + w, y + h, x + w - br, y + h);
+            else ctx.lineTo(x + w, y + h);
+            ctx.lineTo(x + bl, y + h);
+            if (bl) ctx.quadraticCurveTo(x, y + h, x, y + h - bl);
+            else ctx.lineTo(x, y + h);
+            ctx.lineTo(x, y + tl);
+            if (tl) ctx.quadraticCurveTo(x, y, x + tl, y);
+            else ctx.lineTo(x, y);
+            ctx.closePath();
+        }
+
+        function redrawCanvas() {
+            // Clear / draw background
+            ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            drawBackground(ctx);
+
+            // compute the rectangle for the photo (square/rounded-rect)
+            const rectW = IMG_WIDTH;
+            const rectH = IMG_HEIGHT;
+            const rectX = IMG_CENTER_X - rectW / 2;
+            const rectY = IMG_CENTER_Y - rectH / 2;
+            const rectRadius = 20; // adjust for corner roundness
+
+            // Draw clipped user image inside rounded rectangle
+            ctx.save();
+            ctx.beginPath();
+            roundedRectPath(ctx, rectX, rectY, rectW, rectH, rectRadius);
+            ctx.closePath();
+            ctx.clip();
+
+            if (imageState.loaded) {
+                const drawnWidth = imageState.naturalWidth * imageState.scale;
+                const drawnHeight = imageState.naturalHeight * imageState.scale;
+                ctx.drawImage(userImage, imageState.x, imageState.y, drawnWidth, drawnHeight);
+            } else {
+                // placeholder fill inside clipped area
+                ctx.fillStyle = '#1e293b';
+                ctx.fillRect(rectX, rectY, rectW, rectH);
+
+                ctx.fillStyle = '#64748b';
+                ctx.font = '30px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText('Upload Photo', rectX + rectW / 2, rectY + rectH / 2 + 10);
+                ctx.textAlign = 'left';
+            }
+
+            ctx.restore();
+
+            // draw a subtle rounded-rect frame/stroke with shadow
+            ctx.save();
+            ctx.beginPath();
+            roundedRectPath(ctx, rectX, rectY, rectW, rectH, rectRadius);
+            ctx.closePath();
+            ctx.lineWidth = 8;
+            ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+            ctx.shadowColor = 'rgba(0,0,0,0.35)';
+            ctx.shadowBlur = 18;
+            ctx.stroke();
+            ctx.restore();
+
+            // ---------- DYNAMIC TEXT BLOCK (auto layout) ----------
+            const startX = 150;
+            const nameStartY = 170;
+
+            // Helper to count wrapped lines (uses current ctx.font)
+            function getWrappedLinesCount(text, maxWidth) {
+                if (!text) return 0;
+                const words = text.split(' ');
+                let line = '';
+                let lines = 0;
+                for (let n = 0; n < words.length; n++) {
+                    const testLine = line ? (line + ' ' + words[n]) : words[n];
+                    const testWidth = ctx.measureText(testLine).width;
+                    if (testWidth > maxWidth && line) {
+                        lines++;
+                        line = words[n];
+                    } else {
+                        line = testLine;
+                    }
+                }
+                if (line) lines++; // last partial line
+                return lines;
+            }
+
+            // NAME
+            ctx.fillStyle = TEXT_COLOR_NAME;
+            ctx.font = 'bold 65px Inter';
+            ctx.textAlign = 'left';
+            const nameMaxWidth = CANVAS_WIDTH;
+            const nameLineHeight = 68;
+            const nameLines = getWrappedLinesCount(userNameInput.value, nameMaxWidth);
+            // draw name
+            wrapText(ctx, userNameInput.value, startX, nameStartY, nameMaxWidth, nameLineHeight);
+   
+}
+    function initializeImageState() {
+        const img = userImage;
+        imageState.naturalWidth = img.naturalWidth;
+        imageState.naturalHeight = img.naturalHeight;
+
+        const targetWidth = IMG_WIDTH;
+        const targetHeight = IMG_HEIGHT;
+
+        const scaleX = targetWidth / img.naturalWidth;
+        const scaleY = targetHeight / img.naturalHeight;
+
+        imageState.scale = Math.max(scaleX, scaleY);
+        imageState.minScale = imageState.scale; // store initial minimum
+
+        const scaledWidth = img.naturalWidth * imageState.scale;
+        const scaledHeight = img.naturalHeight * imageState.scale;
+
+        imageState.x = IMG_CENTER_X - scaledWidth / 2;
+        imageState.y = IMG_CENTER_Y - scaledHeight / 2;
+
+        imageState.loaded = true;
+    }
+
+    function getCanvasCoords(event) {
+        const rect = canvas.getBoundingClientRect();
+        const scale = CANVAS_WIDTH / rect.width;
+
+        let clientX, clientY;
+        if (event.touches) {
+            clientX = event.touches[0].clientX;
+            clientY = event.touches[0].clientY;
+        } else {
+            clientX = event.clientX;
+            clientY = event.clientY;
+        }
+        return { x: (clientX - rect.left) * scale, y: (clientY - rect.top) * scale };
+    }
+
+    function isInsideRectangle(x, y) {
+        const rectX = IMG_CENTER_X - IMG_WIDTH / 2;
+        const rectY = IMG_CENTER_Y - IMG_HEIGHT / 2;
+        return x >= rectX && x <= rectX + IMG_WIDTH && y >= rectY && y <= rectY + IMG_HEIGHT;
+    }
+
+    function onPointerDown(event) {
+        event.preventDefault();
+        const coords = getCanvasCoords(event);
+        if (imageState.loaded && isInsideRectangle(coords.x, coords.y)) {
+            isDragging = true;
+            lastX = coords.x;
+            lastY = coords.y;
+        }
+    }
+
+    function onPointerMove(event) {
+        if (!isDragging) return;
+        event.preventDefault();
+        const coords = getCanvasCoords(event);
+        const dx = coords.x - lastX;
+        const dy = coords.y - lastY;
+        imageState.x += dx;
+        imageState.y += dy;
+        lastX = coords.x;
+        lastY = coords.y;
+        redrawCanvas();
+    }
+
+    function onPointerUp() { isDragging = false; }
+
+    function onWheel(event) {
+        if (!imageState.loaded) return;
+        event.preventDefault();
+        const scaleFactor = 1.05;
+        const coords = getCanvasCoords(event);
+        if (!isInsideRectangle(coords.x, coords.y)) return;
+
+        const oldScale = imageState.scale;
+        const zoomIn = event.deltaY < 0;
+        let newScale = zoomIn ? oldScale * scaleFactor : oldScale / scaleFactor;
+
+        // Limit scale between stored minimum and a reasonable maximum
+        const min = imageState.minScale * 0.5;
+        const max = imageState.minScale * 5;
+        newScale = Math.max(min, Math.min(max, newScale));
+
+        imageState.x = coords.x - ((coords.x - imageState.x) / oldScale) * newScale;
+        imageState.y = coords.y - ((coords.y - imageState.y) / oldScale) * newScale;
+        imageState.scale = newScale;
+
+        redrawCanvas();
+    }
+
+    function loadStaticBackground() {
+        backgroundImage.onload = () => {
+            backgroundState.naturalWidth = backgroundImage.naturalWidth;
+            backgroundState.naturalHeight = backgroundImage.naturalHeight;
+            backgroundState.loaded = true;
+            redrawCanvas();
+        };
+        backgroundImage.onerror = () => {
+            console.error('Error loading static background image. Falling back to solid color.');
+            backgroundState.loaded = false;
+            redrawCanvas();
+            showMessage('Error loading background image. Using solid color fallback.', 'error');
+        };
+        backgroundImage.src = STATIC_BG_URL;
+    }
+
+    [userNameInput, userPositionInput, userInstituteInput].forEach(input => {
+        input.addEventListener('input', redrawCanvas);
+    });
+
+    userPictureInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            userImage.onload = () => {
+                initializeImageState();
+                redrawCanvas();
+                showMessage('Profile photo loaded! Drag and scroll/pinch inside the frame to adjust.', 'success');
+            };
+            userImage.onerror = () => {
+                showMessage('Error loading profile image. Please try another file.', 'error');
+                userImage = new Image();
+                imageState.loaded = false;
+                redrawCanvas();
+            };
+            userImage.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+
+    canvas.addEventListener('mousedown', onPointerDown);
+    canvas.addEventListener('mouseup', onPointerUp);
+    canvas.addEventListener('mouseout', onPointerUp);
+    canvas.addEventListener('mousemove', onPointerMove);
+    canvas.addEventListener('wheel', onWheel, { passive: false });
+
+    canvas.addEventListener('touchstart', (e) => {
+        // prevent browser default gestures on the canvas
+        e.preventDefault();
+
+        if (e.touches.length === 1) {
+            // start single-finger pan
+            onPointerDown(e);
+        } else if (e.touches.length === 2) {
+            // start pinch
+            pinchActive = true;
+            initialPinchDistance = getTouchDistance(e.touches[0], e.touches[1]);
+            initialPinchScale = imageState.scale || 1;
+            pinchCenterCanvas = getTouchCenterCanvas(e.touches[0], e.touches[1]);
+        }
+    }, { passive: false });
+
+    canvas.addEventListener('touchmove', (e) => {
+        // always prevent to stop page zoom/scroll while interacting with canvas
+        e.preventDefault();
+
+        if (pinchActive && e.touches.length === 2 && imageState.loaded) {
+            const newDistance = getTouchDistance(e.touches[0], e.touches[1]);
+            // scale relative to initial pinch distance
+            let newScale = initialPinchScale * (newDistance / initialPinchDistance);
+
+            // clamp scale
+            const min = imageState.minScale * 0.5;
+            const max = imageState.minScale * 5;
+            newScale = Math.max(min, Math.min(max, newScale));
+
+            // adjust x/y so the pinch center remains anchored
+            const oldScale = imageState.scale;
+            const cx = pinchCenterCanvas.x;
+            const cy = pinchCenterCanvas.y;
+
+            imageState.x = cx - ((cx - imageState.x) / oldScale) * newScale;
+            imageState.y = cy - ((cy - imageState.y) / oldScale) * newScale;
+            imageState.scale = newScale;
+
+            redrawCanvas();
+            return;
+        }
+
+        // single-finger drag
+        if (e.touches.length === 1 && isDragging) {
+            onPointerMove(e);
+        }
+    }, { passive: false });
+
+    canvas.addEventListener('touchend', (e) => {
+        // If fingers reduced to 1, switch back to dragging if inside frame
+        if (e.touches && e.touches.length === 1) {
+            pinchActive = false;
+            // re-initialize dragging with the remaining touch
+            const coords = getCanvasCoords({ touches: [e.touches[0]] });
+            lastX = coords.x;
+            lastY = coords.y;
+            isDragging = true;
+        } else {
+            // end all interactions
+            pinchActive = false;
+            isDragging = false;
+        }
+    });
+
+    canvas.addEventListener('touchcancel', (e) => {
+        pinchActive = false;
+        isDragging = false;
+    });
+
+    // keep existing mouse handlers unchanged
+    canvas.addEventListener('mousedown', onPointerDown);
+    canvas.addEventListener('mouseup', onPointerUp);
+    canvas.addEventListener('mouseout', onPointerUp);
+    canvas.addEventListener('mousemove', onPointerMove);
+    canvas.addEventListener('wheel', onWheel, { passive: false });
+
+    generateBtn.addEventListener('click', () => {
+        if (!imageState.loaded) {
+            showMessage('Don\\t forget your profile picture! Please upload one before generating the image.', 'error');
+            return;
+        }
+        const link = document.createElement('a');
+        link.download = `conference-image-${userNameInput.value.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showMessage('Image downloaded successfully!', 'success');
+    });
+
+    loadStaticBackground();
+</script>
+</body>
+</html>
