@@ -103,55 +103,14 @@
 
     <script type="module">
         // ...existing code...
-        const postToX = document.getElementById('postToX');
-
-        postToX.addEventListener('click', async () => {
-            const canvasEl = document.getElementById('generatorCanvas');
-            if (!canvasEl) { showMessage('Canvas not found', 'error'); return; }
-
-            canvasEl.toBlob(async (blob) => {
-                if (!blob) { showMessage('Could not create image.', 'error'); return; }
-                const file = new File([blob], 'nnn-day1.png', { type: 'image/png' });
-
-                const shareText = "Day 1 NNN please be good to me! Join the movement #NNN2025 🚫🥜 @NoNut_Nov, just don't fap and you'll get rewarded: join us get your badge https://nnn2025.xyz";
-                const pageUrl = "https://nnn2025.xyz";
-                const hashtags = "NNN2025";
-                const intentUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}&hashtags=${encodeURIComponent(hashtags)}`;
-
-                // 1) Native share with file (best on mobile / browsers that support file sharing)
-                try {
-                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                        await navigator.share({ files: [file], text: shareText, url: pageUrl });
-                        return;
-                    }
-                } catch (err) {
-                    console.warn('Native share failed', err);
-                }
-
-                // 2) Copy image to clipboard (so user can paste into X composer), then open X intent
-                try {
-                    if (navigator.clipboard && window.ClipboardItem) {
-                        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-                        window.open(intentUrl, '_blank', 'noopener');
-                        showMessage('Image copied to clipboard — open X and paste it into the composer (Ctrl/Cmd+V).', 'info');
-                        return;
-                    }
-                } catch (err) {
-                    console.warn('Clipboard write failed', err);
-                }
-
-                // 3) Fallback: download image and open X intent (user must attach manually)
-                const link = document.createElement('a');
-                link.download = 'nnn-day1.png';
-                link.href = URL.createObjectURL(blob);
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-
-                window.open(intentUrl, '_blank', 'noopener');
-                showMessage('Image downloaded. Attach it to your X post manually.', 'info');
-            }, 'image/png');
-        });
+       document.getElementById("postToX").addEventListener("click", function() {
+    const twitterUrl =
+      "https://twitter.com/share?url=https%3A%2F%2Fnnn2025.xyz&text=" +
+      encodeURIComponent(
+        "Day 1 NNN please be good to me! Join the movement #NNN2025 🚫🥜 @NoNut_Nov, just don't fap and you'll get rewarded: join us get your badge\n\nhttps://nnn2025.xyz (dont forget to paste your badge)"
+      );
+    window.open(twitterUrl, "_blank");
+  });
         // ...existing code...
 
         function canvasToFile(callback) {
